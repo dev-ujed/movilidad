@@ -1,0 +1,84 @@
+/* pasos.css*/
+.pasos {
+  padding: 20px;
+  background: #fff;
+}
+
+.pasos h2 {
+  text-align: center;
+  margin-bottom: 40px;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.pasos-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.paso-item {
+  background: #fff;
+  padding: 70px;
+  text-align: left;
+}
+
+.paso-item h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.paso-item .numero {
+  color: rgba(239, 76, 76, 1);
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.paso-item p {
+  font-size: 16px;
+  color: #555;
+}
+
+.paso-item a {
+  color: #E91E63;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.paso-item a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 1440px) {
+  .pasos-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 834px) {
+  .pasos-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 393px) {
+  .pasos-grid {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .paso-item {
+    padding: 20px;
+    
+  }
+
+  .paso-item.right  {
+    padding-right: 70px;
+  }
+
+  .paso-item.left {
+    padding-left: 70px;
+  }
+
+  .paso-item .numero {
+    font-size: 24px;
+  }
+}

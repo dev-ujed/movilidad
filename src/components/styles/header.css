@@ -1,0 +1,144 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #fff;
+  border-bottom: 1px solid #ddd;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logoImage {
+  height: 40px;
+  margin-right: 10px;
+}
+
+.logoText {
+  font-size: 18px;
+  font-weight: bold;
+  color: #C32026;
+}
+
+.nav {
+  display: flex;
+  justify-content: center;
+  flex-grow: 1;
+}
+
+.nav ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+  margin: 0;
+  padding: 0;
+}
+
+.nav ul li {
+  display: inline;
+}
+
+.nav ul li a {
+  text-decoration: none;
+  color: #333;
+  font-size: 16px;
+}
+
+.nav ul li a:hover {
+  color: #C32026;
+}
+
+
+.hamburger {
+  display: none;
+  height: 30px;
+  width: 30px;
+  padding: 20px;
+  background-color: transparent;
+  z-index: 1002;
+  cursor: pointer;
+  user-select: none;
+}
+
+.hamburger.is-active {
+  background-color: transparent;
+}
+
+.layer {
+  background: #333333;
+  margin-bottom: 4px;
+  border-radius: 2px;
+  width: 28px;
+  height: 4px;
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+  transition: all 0.25s cubic-bezier(0.05, 1.04, 0.72, 0.98);
+}
+
+.hamburger.is-active .top {
+  transform: translateY(8px) rotate(45deg);
+}
+
+.hamburger.is-active .mid {
+  opacity: 0;
+}
+
+.hamburger.is-active .bottom {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+.nav.is_active {
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.95);
+  z-index: 1001;
+}
+
+@media (max-width: 1440px) {
+  .nav ul {
+    gap: 15px;
+  }
+}
+
+@media (max-width: 834px) {
+  .nav {
+    display: none; 
+  }
+
+  .hamburger {
+    display: block;
+  }
+
+  .nav.is_active {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; 
+  }
+
+  .nav ul {
+    flex-direction: column; 
+    gap: 30px;
+  }
+  .nav ul li a {
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 393px) { /* Mobile view */
+  .nav ul li a {
+    font-size: 30px;
+  }
+}

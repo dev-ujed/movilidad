@@ -1,0 +1,20 @@
+@keyframes slideUp {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-30px); }
+    100% { transform: translateY(0); }
+  }
+  
+  @keyframes slideDown {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(30px); }
+    100% { transform: translateY(0); }
+  }
+  
+  .up img {
+    animation: slideUp 3s infinite;
+  }
+  
+  .down img {
+    animation: slideDown 3s infinite;
+  }
+  

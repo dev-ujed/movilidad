@@ -1,0 +1,100 @@
+.convocatorias {
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .convocatorias h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  .convocatorias-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); 
+    gap: 20px;
+    justify-items: center;
+  }
+  
+  .convocatorias-grid img {
+    width: 100%;
+    height: auto;
+    max-width: 250px;
+    border-radius: 8px;
+  }
+
+
+  
+/* diseño de las convocatorias */
+
+  .convocatoria {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 20px;
+    max-width: 200px; 
+  }
+  
+  .convocatoria-image {
+    width: 100%;
+    height: auto;
+  }
+  
+  .convocatoria-title {
+    font-size: 18px;
+    margin: 10px ;
+  }
+
+  @media (max-width: 1440px) {
+    .convocatorias-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+@media (max-width: 803px)  {
+    .convocatorias-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 393px) {
+  .convocatorias-grid {
+    display: none;
+  }
+
+  .carousel {
+    position: relative;
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto;
+  }
+
+  .carousel-content {
+    display: flex;
+    justify-content: center;
+  }
+
+  .arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+  }
+
+  .arrow.left {
+    left: 0;
+  }
+
+  .arrow.right {
+    right: 0;
+  }
+
+  .convocatoria {
+    margin: 0;
+  }
+}

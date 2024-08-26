@@ -1,0 +1,70 @@
+.experiencias {
+    padding: 20px;
+    background-color: #f9f9f9;
+    text-align: center;
+  }
+  
+  .experiencias h2 {
+    margin-bottom: 40px;
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  .experiencias-grid {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 60px;
+    margin-bottom: 20px;
+  }
+  
+  .imagen-secundaria img,
+  .imagen-principal img {
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+  }
+  
+  .imagen-principal img {
+    width: 200px;
+    height: 200px;
+  }
+  
+  .cita {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  .cita p {
+    font-size: 16px;
+    color: #555;
+    margin: 10px 0;
+  }
+  
+  .cita .comillas {
+    color: #E91E63;
+    font-size: 30px;
+  }
+  
+  .cita .nombre {
+    font-weight: bold;
+    color: #333;
+    margin-top: 20px;
+  }
+  
+
+  @media (max-width: 834px) {
+
+    .imagen-secundaria img,
+    .imagen-principal img {
+        width: 100%;
+        height: auto;
+    }
+}
+
+@media (max-width: 393px) {
+    .cita p {
+        font-size: 14px;
+    }
+}
