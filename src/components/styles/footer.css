@@ -1,8 +1,10 @@
-/*footer.css*/
+
+/*footer.css */
 .footer {
   background-color: #333;
   color: #fff;
   padding: 20px 0;
+  text-align: justify;
 }
 
 .footer-container {
@@ -19,15 +21,13 @@
 }
 
 .footer-section h3 {
-  font-size: 18px;
-  margin-bottom: 10px;
+  font-size: 16px;
 }
 
 .footer-section p,
-.footer-section a {
+.footer-section a{
   font-size: 14px;
   color: #ccc;
-  margin-bottom: 5px;
   text-decoration: none;
 }
 
@@ -38,13 +38,11 @@
 .footer-bottom {
   background-color: #b11830;
   color: #fff;
-  text-align: center;
-  padding: 10px 0;
+  padding: 15px 0;
 }
 
 .footer-logo {
-  height: 40px;
-  margin-bottom: 20px;
+  height: 55px;
 }
 
 .footer-logo img {
@@ -55,7 +53,7 @@
 .social-icons {
   display: flex;
   gap: 10px;
-  justify-content: center;
+  justify-content:first baseline;
 }
 
 .social-icons a {

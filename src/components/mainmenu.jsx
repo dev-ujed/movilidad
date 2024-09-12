@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import './styles/header.css';
 
 export default function MainMenu() {
@@ -16,10 +17,10 @@ export default function MainMenu() {
       </div>
       <nav className={`nav ${isMenuOpen ? 'is_active' : ''}`}>
         <ul>
-          <li><a href="#i">Inicio</a></li>
+        <li><Link to="/">Inicio</Link></li>
           <li><a href="#di">La Dirección</a></li>
-          <li><a href="#de">Destinos</a></li>
-          <li><a href="#d">Documentos</a></li>
+          <li><a href="/destinos">Destinos</a></li>
+          <li><a href="/documentos">Documentos</a></li>
         </ul>
       </nav>
       <div className={`hamburger ${isMenuOpen ? 'is-active' : ''}`} onClick={toggleMenu}>
