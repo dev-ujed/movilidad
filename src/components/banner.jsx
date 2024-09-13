@@ -38,7 +38,7 @@ export default function Banner() {
       <div className="banner-content">
         <h1>Estudia en el extranjero</h1>
         <p>Conoce las diferentes universidades nacionales e internacionales en las que puedes estudiar mediante el programa de intercambio académico de la UJED</p>
-        <button>Ver destinos</button>
+        <a href="/destinos">Ver destinos</a>
       </div>
       <div className="banner-images">
         {[0, 1, 2].map((columnIndex) => (

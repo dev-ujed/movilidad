@@ -2,7 +2,7 @@
 /*footer.css */
 .footer {
   background-color: #333;
-  color: #fff;
+  color: #ADB5BD;
   padding: 20px 0;
   text-align: justify;
 }
@@ -22,12 +22,12 @@
 
 .footer-section h3 {
   font-size: 16px;
+  color: #fff;
 }
 
 .footer-section p,
 .footer-section a{
   font-size: 14px;
-  color: #ccc;
   text-decoration: none;
 }
 
@@ -62,6 +62,29 @@
   text-decoration: none;
 }
 
+.social-icons i{
+  font-size: 1.3rem;
+  color: #ADB5BD;
+}
+
+.contact-icons a{
+  color: #ADB5BD;
+}
+
+.contact-icons i{
+  font-size: 1rem;
+  color: #fff;
+  padding: 0.5rem;
+}
+
+.verMapa a{
+  color: #3399CC;
+}
+
+.direccion p{
+  color: #ADB5BD;
+}
+
 .logoImage {
   max-width: 100%;
   height: auto;
@@ -69,6 +92,7 @@
 }
 
 @media (max-width: 1440px) {
+  
   .footer-section h3 {
     font-size: 16px;
   }
@@ -92,6 +116,13 @@
   }
   .footer-logo {
     height: 30px;
+  }
+
+  .footer .logo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
   }
 
   .social-icons a {

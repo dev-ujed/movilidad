@@ -1,29 +1,26 @@
 import React, { useState, useEffect } from 'react';
 import './styles/convocatorias.css';
 
+import image1 from '../assets/image/FB_IMG_1718396208572.jpg';
+import image2 from '../assets/image/Call.png';
+
 const convocatoriasData = [
   {
-      title: 'Semana de la Internacionalización',
+      imageSrc: image1,
+    },
+    {
+      imageSrc: image2,
+    },
+    {
       imageSrc: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQs4bnP9PSROxUz9K6-T56xf6NWWppg_4gRkWTTD8MUe7HKoDLzZBtPv0mgzvSd1yrk_yY&usqp=CAU',
     },
     {
-      title: 'Programa 2023-B',
       imageSrc: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQs4bnP9PSROxUz9K6-T56xf6NWWppg_4gRkWTTD8MUe7HKoDLzZBtPv0mgzvSd1yrk_yY&usqp=CAU',
     },
     {
-      title: 'Movilidad Académica',
       imageSrc: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQs4bnP9PSROxUz9K6-T56xf6NWWppg_4gRkWTTD8MUe7HKoDLzZBtPv0mgzvSd1yrk_yY&usqp=CAU',
     },
     {
-      title: 'Becas Parciales de Estudio en Brasil',
-      imageSrc: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQs4bnP9PSROxUz9K6-T56xf6NWWppg_4gRkWTTD8MUe7HKoDLzZBtPv0mgzvSd1yrk_yY&usqp=CAU',
-    },
-    {
-      title: 'Internacionalización UJED',
-      imageSrc: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQs4bnP9PSROxUz9K6-T56xf6NWWppg_4gRkWTTD8MUe7HKoDLzZBtPv0mgzvSd1yrk_yY&usqp=CAU',
-    },
-    {
-      title: 'nose ',
       imageSrc: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQs4bnP9PSROxUz9K6-T56xf6NWWppg_4gRkWTTD8MUe7HKoDLzZBtPv0mgzvSd1yrk_yY&usqp=CAU',   
     },
 ];
@@ -62,16 +59,27 @@ export default function ConvocatoriasContainer() {
     setCurrentSlide((prev) => (prev - 1 + convocatoriasData.length) % convocatoriasData.length);
   };
 
+  const goToSlide = (index) => {
+    setCurrentSlide(index);
+  };
+
   return (
     <div className="convocatorias">
       <h2>Convocatorias</h2>
       {isMobile ? (
         <div className="carousel">
-          <button onClick={prevSlide} className="arrow left">&lt;</button>
           <div className="carousel-content">
             <Convocatoria {...convocatoriasData[currentSlide]} />
           </div>
-          <button onClick={nextSlide} className="arrow right">&gt;</button>
+          <div className="indicators">
+            {convocatoriasData.map((_, index) => (
+              <div
+                key={index}
+                className={`indicator ${currentSlide === index ? 'active' : ''}`}
+                onClick={() => goToSlide(index)}
+              />
+            ))}
+          </div>
         </div>
       ) : (
         <div className="convocatorias-grid" onClick={handleClick}>

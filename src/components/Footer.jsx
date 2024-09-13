@@ -10,26 +10,26 @@ export default function Footer() {
       <footer className='footer'>
         <div className= "p-4 d-flex flex-column flex-lg-row justify-content-center">
           <div className='d-flex flex-column flex-lg-row justify-content-center my-4'>
-            <div className='col-lg-3 col-md-6 mb-4 mb-md-0 text-center'>
+            <div className='logo col-lg-3 col-md-6 mb-4 mb-md-0 text-center'>
               <img src={logo} alt="Dirección de Internacionalización logo" />
             </div>
             <div className='footer-section col-lg-3 col-md-6 mb-4 mb-md-0'>
               <h3 className='mb-4'>Dirección</h3>
-              <p>Blvd. Guadiana s/n. Fracc. Los Remedios. A un costado de la Biblioteca Central de la UJED.</p>
-              <a href="https://goo.gl/maps/xyz" target="_blank" rel="noopener noreferrer">Ver mapa →</a>
+              <p className='direccion'>Blvd. Guadiana s/n. Fracc. Los Remedios. A un costado de la Biblioteca Central de la UJED.</p>
+              <a className='verMapa' href="https://maps.app.goo.gl/nWC5NxWMSrBB56yf7" target="_blank" rel="noopener noreferrer">Ver mapa →</a>
             </div>
             <div className='footer-section col-lg-3 col-md-6 mb-4 mb-md-0'>
               <h3 className='mb-4'>Contacto</h3>
-              <ul className='list-unstyled'>
-                <li className='mb-2'><a href="mailto:bienvenidos@ujed.mx">bienvenidos@ujed.mx</a></li>
-                <li className='mb-2'><a href="tel:+526188271202">618 827 1202</a></li>
+              <ul className='list-unstyled contact-icons'>
+                <li className='mb-2'><a href=""><i class="fa-regular fa-envelope"></i>nacional@ujed.mx</a></li>
+                <li className='mb-2'><a href="tel:+526188271202"><i class="fa-solid fa-phone"></i>618 827 1202</a></li>
               </ul>
             </div>
             <div className='footer-section col-lg-3 col-md-6 mb-4 mb-md-0'>
               <h3 className='mb-4'>Redes sociales</h3>
-              <ul className='social-icons list-unstyled d-flex flex-row justify-content-center'>
-                <li><a class="text-white px-2" href="https://www.instagram.com/ujed"><i class="fab fa-facebook-f"></i></a></li>
-                <li><a class="text-white px-2" href="https://www.facebook.com/ujed"><i class="fab fa-instagram"></i></a></li>
+              <ul className='social-icons list-unstyled d-flex flex-row justify-content-center justify-content-lg-start'>
+                <li><a class="text-white px-2" href="https://www.instagram.com/ujed_oficial?igsh=M3hhY3Y4ZW44eWhl" target="_blank"><i class="fa-brands fa-instagram"></i></a></li>
+                <li><a class="text-white px-2" href="https://www.facebook.com/profile.php?id=100049071859082&mibextid=ZbWKwL" target="_blank"><i class="fa-brands fa-facebook"></i></a></li>
               </ul>
             </div>
           </div>
