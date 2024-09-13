@@ -21,15 +21,15 @@ export default function Footer() {
             <div className='footer-section col-lg-3 col-md-6 mb-4 mb-md-0'>
               <h3 className='mb-4'>Contacto</h3>
               <ul className='list-unstyled contact-icons'>
-                <li className='mb-2'><a href=""><i class="fa-regular fa-envelope"></i>nacional@ujed.mx</a></li>
-                <li className='mb-2'><a href="tel:+526188271202"><i class="fa-solid fa-phone"></i>618 827 1202</a></li>
+                <li className='mb-2'><a href=""><i className="fa-regular fa-envelope"></i>nacional@ujed.mx</a></li>
+                <li className='mb-2'><a href="tel:+526188271202"><i className="fa-solid fa-phone"></i>618 827 1202</a></li>
               </ul>
             </div>
             <div className='footer-section col-lg-3 col-md-6 mb-4 mb-md-0'>
               <h3 className='mb-4'>Redes sociales</h3>
               <ul className='social-icons list-unstyled d-flex flex-row justify-content-center justify-content-lg-start'>
-                <li><a class="text-white px-2" href="https://www.instagram.com/ujed_oficial?igsh=M3hhY3Y4ZW44eWhl" target="_blank"><i class="fa-brands fa-instagram"></i></a></li>
-                <li><a class="text-white px-2" href="https://www.facebook.com/profile.php?id=100049071859082&mibextid=ZbWKwL" target="_blank"><i class="fa-brands fa-facebook"></i></a></li>
+                <li><a className="text-white px-2" href="https://www.instagram.com/ujed_oficial?igsh=M3hhY3Y4ZW44eWhl" target="_blank"><i className="fa-brands fa-instagram"></i></a></li>
+                <li><a className="text-white px-2" href="https://www.facebook.com/profile.php?id=100049071859082&mibextid=ZbWKwL" target="_blank"><i className="fa-brands fa-facebook"></i></a></li>
               </ul>
             </div>
           </div>
