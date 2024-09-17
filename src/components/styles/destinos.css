@@ -1,6 +1,8 @@
 .main{
     width: 100%;
-    height: 100vh;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 .destinos{
@@ -53,14 +55,41 @@
     align-items: flex-start;
 }
 
+.universidades h3{
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    margin-top: 2rem;
+}
+
 .universidad {
+    display: flex;
+    align-items: center;
+}
+
+.universidad .imgPais{
+    width: 28px;
+    height: 28px;
+    margin-bottom: 1rem;
+    margin-right: 1rem;
+}
+
+.universidad p {
+    margin: 0;
+    background-color: #EBF5FA;
+    padding: 4px;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+  }
+  
+.universidad a {
+    text-decoration: none;
+    margin-left: 1rem;
+    color: black;
     margin-bottom: 1rem;
 }
 
-.universidad h2{
-    font-size: 1.8rem;
-    font-weight: 400;
-}
+
 
 .carrera-titulo{
     font-size: 1.3rem;

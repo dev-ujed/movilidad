@@ -32,6 +32,7 @@ export default function Destinos() {
           console.log('Datos de universidades:', data);
           // Asumiendo que data es un array de objetos con escuelas_mov
           const universidadesData = data.flatMap(item => item.escuelas_mov);
+          console.log('Universidades a establecer en el estado:', universidadesData);
           setUniversidades(universidadesData);
         } catch (error) {
           console.error('Error al obtener universidades:', error);
@@ -48,6 +49,14 @@ export default function Destinos() {
 
   // Encuentra el nombre de la carrera seleccionada
   const selectedCarreraObj = carreras.find(carrera => carrera.id === parseInt(selectedCarrera));
+
+  const importAll = (r) => {
+    let images = {};
+    r.keys().map((item, index) => { images[item.replace('./', '')] = r(item); });
+    return images;
+  };
+  
+  const icons = importAll(require.context('../../assets/image/banderas/', false, /\.(png)$/));
 
   return (
     <div>
@@ -69,20 +78,38 @@ export default function Destinos() {
             </div>
           </div>
         </main>
-        <div className='info-destinos'>
+        <div className='info-destinos container'>
             <div className='info-destinos-content'>
               <p className='titulo'>Destinos para la carrera <span>{selectedCarreraObj ? selectedCarreraObj.carrera : 'Selecciona una carrera'}</span></p>
+              
               <div className='universidades'>
-                { universidades.length > 0 ? (
-                  universidades.map(universidad => (
-                    <div key={universidad.id} className='universidad'>
-                      <h2>{universidad.nombre}</h2>
-                      <a href={universidad.pagina_web} target="_blank" rel="noopener noreferrer">Sitio Web</a>
-                    </div>
-                  ))
-                ) : (
-                  <p className='titulo'>No hay universidades disponibles para la carrera seleccionada.</p>
-                )}
+                <h3>Nacionales</h3>
+                {universidades.filter(univ => univ.tipo === 'Nacional').length > 0 ? (
+                  universidades
+                    .filter(univ => univ.tipo === 'Nacional')
+                    .map(universidad => (
+                      <div key={universidad.id} className='universidad'>
+                        <img className='imgPais' src={icons[`${universidad.pais}.png`]} alt={`Icono ${universidad.pais}`} />
+                        <a href={universidad.pagina_web}>{universidad.nombre}</a>
+                      </div>
+                    ))
+
+                ) : (<p className='titulo'>No hay universidades nacionales para la carrera seleccionada.</p>)}
+              </div>
+              <div className='universidades'>
+                <h3>Internacionales</h3>
+                {universidades.filter(univ => univ.tipo === 'Internacional').length > 0 ? (
+                  universidades
+                    .filter(univ => univ.tipo === 'Internacional')
+                    .map(universidad => (
+                      <div key={universidad.id} className='universidad'>
+                        <img className='imgPais' src={icons[`${universidad.pais}.png`]} alt={`Icono ${universidad.pais}`} />
+                        <p>{universidad.pais}</p>
+                        <a href={universidad.pagina_web}>{universidad.nombre}</a>
+                      </div>
+                    ))
+
+                ) : (<p className='titulo'>No hay universidades internacionales para la carrera seleccionada.</p>)}
               </div>
             </div>
           </div>
