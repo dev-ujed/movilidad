@@ -7,7 +7,9 @@
 .experiencias h2 {
   margin-bottom: 40px;
   font-size: 24px;
-  font-weight: bold;
+  font-weight: 700;
+  margin-top: 5rem;
+  margin-bottom: 3rem;
 }
 
 .experiencias-grid {
