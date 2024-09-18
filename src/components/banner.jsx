@@ -1,5 +1,6 @@
 // Banner.jsx
 import React, { useState, useEffect } from 'react';
+import Masonry from 'react-masonry-css';
 import './styles/banner.css';
 
 function getRandomImage(images) {
@@ -33,6 +34,11 @@ export default function Banner() {
     setSelectedImages(newSelectedImages);
   }, []);
 
+  const breakpointColumnsObj = {
+    default: 3,  // 3 columnas en pantallas grandes
+    1100: 2,     // 2 columnas en pantallas medianas
+  };
+
   return (
     <div className="banner">
       <div className="banner-content">
@@ -40,15 +46,17 @@ export default function Banner() {
         <p>Conoce las diferentes universidades nacionales e internacionales en las que puedes estudiar mediante el programa de intercambio académico de la UJED</p>
         <a href="/destinos">Ver destinos</a>
       </div>
-      <div className="banner-images">
-        {[0, 1, 2].map((columnIndex) => (
-          <div key={columnIndex} className="column">
-            {selectedImages.slice(columnIndex * 3, (columnIndex + 1) * 4).map((image, imgIndex) => (
-              <img key={imgIndex} src={image} alt={`Image ${columnIndex * 3 + imgIndex + 1}`} className="banner-image" />
-            ))}
+      <Masonry
+        breakpointCols={breakpointColumnsObj}
+        className="banner-images my-masonry-grid"
+        columnClassName="my-masonry-grid_column"
+      >
+        {selectedImages.map((image, index) => (
+          <div key={index} className="image-container">
+            <img src={image} alt={`Banner image ${index}`} style={{ width: '100%', display: 'block' }} />
           </div>
         ))}
-      </div>
+      </Masonry>
     </div>
   );
 }
