@@ -13,7 +13,7 @@ export default function MainMenu() {
   return (
     <header className="header">
       <div className="logo">
-        <img src={require('../assets/image/Logo2.png')} alt="Logo" className="logoImage" />
+        <a href="/"><img src={require('../assets/image/Logo2.png')} alt="Logo" className="logoImage" /></a>
       </div>
       <nav className={`nav ${isMenuOpen ? 'is_active' : ''}`}>
         <ul>
