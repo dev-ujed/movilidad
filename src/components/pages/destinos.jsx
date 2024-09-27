@@ -11,7 +11,7 @@ export default function Destinos() {
   useEffect(() => {
     const fetchCarreras = async () => {
       try {
-        const response = await fetch('http://127.0.0.1:8000/movilidad/program-estudios/carreras/');
+        const response = await fetch(/*'http://127.0.0.1:8000/movilidad/program-estudios/carreras/'*/"https://apispre.ujed.mx/program-estudios/carreras/");
         const data = await response.json();
         console.log('Datos de carreras:', data);
         setCarreras(data);
@@ -27,7 +27,9 @@ export default function Destinos() {
     const fetchUniversidades = async () => {
       if (selectedCarrera) {
         try {
-          const response = await fetch(`http://127.0.0.1:8000/movilidad/program-estudios/mov-carreras/?carrera_id=${selectedCarrera}&disponible=true`);
+          const response = await fetch(
+            /*`http://127.0.0.1:8000/movilidad/program-estudios/mov-carreras/?carrera_id=${selectedCarrera}&disponible=true`*/
+            `https://apispre.ujed.mx/program-estudios/mov-carreras/?carrera_id=${selectedCarrera}&disponible=true`);
           const data = await response.json();
           console.log('Datos de universidades:', data);
           // Asumiendo que data es un array de objetos con escuelas_mov
