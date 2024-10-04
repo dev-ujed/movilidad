@@ -1,5 +1,75 @@
 /* pasos.css*/
-.pasos {
+.pasos{
+  margin-top: 8rem;
+  background-image: url('../../assets/image/fondo-movilidad.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.pasos h2{
+  text-align: center;
+  font-weight: 700;
+  margin-bottom: 6rem;
+}
+
+.pasos-grid{
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.pasos-grid p{
+  
+}
+
+.pasos-grid h3{
+  color: #EF4C4C;
+  font-weight: 700;
+}
+
+.paso-item.right  {
+  padding-right: 70px;
+}
+
+.paso-item.left {
+  padding-left: 70px;
+}
+
+.paso-item .numero {
+  font-size: 24px;
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .pasos-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .pasos-grid p{
+    text-align: left;
+  }
+}
+
+@media (min-width: 1024px) {
+  .pasos-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 5rem;
+  }
+
+  .pasos-grid h3{
+    font-size: 30px;
+  }
+
+  .paso-item.right  {
+    padding-right: 0;
+  }
+  
+  .paso-item.left {
+    padding-left: 0;
+  }
+}
+/*.pasos {
   padding: 20px;
   background: #fff;
 }
@@ -82,4 +152,4 @@
   .paso-item .numero {
     font-size: 24px;
   }
-}
+}*/

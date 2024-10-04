@@ -36,7 +36,7 @@ const pasosData = [
 
 export default function Pasos() {
   return (
-    <div className="pasos">
+    <div className="pasos container">
       <h2>¿Cómo empiezo mi trámite de movilidad?</h2>
       <div className="pasos-grid">
         {pasosData.map((paso, index) => (
