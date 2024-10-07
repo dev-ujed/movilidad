@@ -13,6 +13,14 @@
   margin-bottom: 6rem;
 }
 
+span{
+  font-weight: bold;
+}
+
+a{
+  text-decoration: none;
+}
+
 .pasos-grid{
   display: grid;
   grid-template-columns: repeat(1, 1fr);

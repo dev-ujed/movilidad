@@ -22,6 +22,7 @@ export default function Footer() {
               <h3 className='mb-4'>Contacto</h3>
               <ul className='list-unstyled contact-icons'>
                 <li className='mb-2'><a href=""><i className="fa-regular fa-envelope"></i>nacional@ujed.mx</a></li>
+                <li className='mb-2'><a href=""><i className="fa-regular fa-envelope"></i>internacional@ujed.mx</a></li>
                 <li className='mb-2'><a href="tel:+526188271202"><i className="fa-solid fa-phone"></i>618 827 1202</a></li>
               </ul>
             </div>
