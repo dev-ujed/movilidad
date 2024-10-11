@@ -1,5 +1,9 @@
-.experiencias {
-  padding: 20px;
+.experiencias{
+  display: none;
+}
+
+.experiencias-m{
+  padding: 5rem;
   background-color: #f9f9f9;
   text-align: center;
 }
@@ -8,7 +12,6 @@
   margin-bottom: 40px;
   font-size: 24px;
   font-weight: 700;
-  margin-top: 5rem;
   margin-bottom: 3rem;
 }
 
@@ -24,23 +27,56 @@
   cursor: pointer;
 }
 
-.imagen-secundaria img,
-.imagen-principal img {
-  border-radius: 50%;
-  width: 150px;
-  height: 150px;
-  object-fit: cover;
-  transition: transform 0.3s ease;
+.slider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.slider-content {
+  position: relative; 
+  text-align: center;
+}
+
+.imagen-principal {
+  position: relative;
 }
 
 .imagen-principal img {
   width: 200px;
   height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+  transition: transform 0.3s ease-in-out;
 }
 
-.imagen-secundaria.selected img,
-.imagen-principal.selected img {
-  transform: scale(1.1);
+.cita {
+  margin-top: 20px;
+  max-width: 600px;
+}
+
+button.prev, button.next {
+  background-color: transparent;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #333;
+}
+
+button.prev {
+  left: -40px; 
+}
+
+button.next {
+  right: -40px; 
+}
+
+button.prev:hover, button.next:hover {
+  color: #E91E63;
 }
 
 .cita {
@@ -49,14 +85,14 @@
 }
 
 .cita p {
-  font-size: 16px;
+  font-size: 14px;
   color: #555;
   margin: 10px 0;
 }
 
 .cita .comillas {
   color: #E91E63;
-  font-size: 30px;
+  font-size: 20px;
 }
 
 .cita .nombre {
@@ -65,20 +101,104 @@
   margin-top: 20px;
 }
 
-@media (max-width: 834px) {
+
+@media (min-width: 768px) and (max-width: 1024px){
+  .slider{
+    display: none;
+  }
+
+  .experiencias{
+    display: block;
+  }
+
+  .experiencias-m h2{
+    margin-bottom: 5rem;
+  }
+
+  .experiencias-grid {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 60px;
+    margin-bottom: 20px;
+  }
+  .experiencias-grid{
+    cursor: pointer;
+  }
   .imagen-secundaria img,
   .imagen-principal img {
-    width: 100%;
-    height: auto;
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
   }
-}
+  .imagen-principal img {
+    width: 250px;
+    height: 250px;
+  }
+  .imagen-secundaria.selected img,
+  .imagen-principal.selected img {
+    transform: scale(1.1);
+  }
 
-@media (max-width: 393px) {
   .cita p {
-    font-size: 14px;
+    font-size: 18px;
+  }
+  .cita .comillas {
+    color: #E91E63;
+    font-size: 30px;
+  }
+  
+}
+
+@media (min-width: 1024px){
+  .slider{
+    display: none;
   }
 
-  .experiencias-grid img{
-    
+  .experiencias{
+    display: block;
+  }
+
+  .experiencias-m h2{
+    margin-bottom: 5rem;
+  }
+
+  .experiencias-grid {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 60px;
+    margin-bottom: 20px;
+  }
+  .experiencias-grid{
+    cursor: pointer;
+  }
+  .imagen-secundaria img,
+  .imagen-principal img {
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+  .imagen-principal img {
+    width: 250px;
+    height: 250px;
+  }
+  .imagen-secundaria.selected img,
+  .imagen-principal.selected img {
+    transform: scale(1.1);
+  }
+
+  .cita p {
+    font-size: 18px;
+  }
+  .cita .comillas {
+    color: #E91E63;
+    font-size: 30px;
   }
 }
+
+

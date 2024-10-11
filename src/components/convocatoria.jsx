@@ -1,18 +1,19 @@
 import React, { useState } from 'react';
 import './styles/convocatorias.css';
 import { useSwipeable } from 'react-swipeable';
-import image1 from '../assets/image/FB_IMG_1718396208572.jpg';
+import image1 from '../assets/image/convocatoria-2025a.jpg';
+import image3 from '../assets/image/FB_IMG_1718396208572.jpg'
 import image2 from '../assets/image/Call.png';
 
 const convocatoriasData = [
   {
-    imageSrc: image2,
+    imageSrc: image1,
   },
   {
     imageSrc: image2,
   },
   {
-    imageSrc: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQs4bnP9PSROxUz9K6-T56xf6NWWppg_4gRkWTTD8MUe7HKoDLzZBtPv0mgzvSd1yrk_yY&usqp=CAU',
+    imageSrc: image3,
   },
   {
     imageSrc: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQs4bnP9PSROxUz9K6-T56xf6NWWppg_4gRkWTTD8MUe7HKoDLzZBtPv0mgzvSd1yrk_yY&usqp=CAU',
