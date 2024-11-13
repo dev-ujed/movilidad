@@ -30,7 +30,7 @@ export default function Login() {
 
         try {
             const response = await axios.post(
-                'http://localhost:8000/users/login/', 
+                'https://movilidadback.ujed.mx/users/login/', 
                 loginData, 
                 {
                     headers: {
@@ -38,10 +38,10 @@ export default function Login() {
                     }
                 }
             );
-            console.log("Token recibido:", response.data.token);
+            //console.log("Token recibido:", response.data.token);
             localStorage.setItem('token', response.data.token);
             //window.location.href = "/dashboard";
-            navigate("/dashboard"); 
+            navigate("/main/inicio"); 
     
         } catch (err) {
             setError('Correo o contraseña incorrectos');
