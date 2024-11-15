@@ -19,6 +19,8 @@ import PrivateRoute from './components/admin/privateRoute';
 import EnProceso from './components/admin/EnProceso';
 import Inicio from './components/admin/inicio';
 import Detalles from './components/admin/detalles';
+import Atendidos from './components/admin/atendidos';
+import Rechazados from './components/admin/rechazados';
 
 function App() {
   return (
@@ -41,6 +43,8 @@ function App() {
           <Route path="inicio" element={<Inicio />} />
           <Route path="en-proceso" element={<EnProceso />} />
           <Route path="detalles/:matricula" element={<Detalles />} />
+          <Route path="atendidos" element={<Atendidos />} />
+          <Route path="rechazados" element={<Rechazados />} />
         </Route>
       </Routes>
     </Router>

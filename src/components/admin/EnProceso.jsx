@@ -87,7 +87,7 @@ const handleAction = (row) => {
   const fetchData = async () => {
     try{
       const response = await axios.get('https://movilidadback.ujed.mx/intercambio/procedures/');
-      const data = response.data.results;
+      const data = response.data;
 
       if(Array.isArray(data)){
         const formattedData = data.map(item => ({
