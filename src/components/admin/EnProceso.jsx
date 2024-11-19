@@ -1,11 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import Typography from '@mui/material/Typography';
 import Paper from '@mui/material/Paper';
-import InputBase from '@mui/material/InputBase';
-import IconButton from '@mui/material/IconButton';
-import SearchIcon from '@mui/icons-material/Search';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -14,6 +10,9 @@ import TableHead from '@mui/material/TableHead';
 import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
 import Button from '@mui/material/Button';
+
+import ApiService from './ApiServices';
+import BuscadoryFiltros from './BuscadoryFiltros';
 
 
 function createData(solicita, unidadAcademica, carrera, fechasolicitud, estado) {
@@ -31,10 +30,14 @@ export default function EnProceso() {
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
   const [searchValue, setSearchValue] = useState('');
   const [rows, setRows] = useState(initialRows);
+  const [selectedEstado, setSelectedEstado] = useState('');
+  const [estados, setEstados] = useState([]);
+  
+  const [selectedTipo, setSelectedTipo] = useState('');
   const navigate = useNavigate();
 
   // Información para la tabla
-const columns = [
+  const columns = [
   { id: 'matricula', label: 'Matricula', minWidth: 170 },
   { id: 'nombre', label: 'Solicita', minWidth: 170 },
   { id: 'fechasolicitud', label: 'Fecha de solicitud', minWidth: 100 },
@@ -53,13 +56,13 @@ const columns = [
       </Button>
     ),
   },
-];
+  ];
 
-// Función para manejar la acción del botón
-const handleAction = (row) => {
+  // Función para manejar la acción del botón
+  const handleAction = (row) => {
   navigate(`/main/detalles/${row.matricula}`);
   console.log('Detalles de la fila:', row);
-};
+  };
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -83,31 +86,40 @@ const handleAction = (row) => {
     setRows(filteredRows);
   };
 
-  //API para ver los estudiantes de la tabla procedures
-  const fetchData = async () => {
-    try{
-      const response = await axios.get('https://movilidadback.ujed.mx/intercambio/procedures/');
-      const data = response.data;
+  // Función para manejar el cambio de estado y actualizar la tabla
+  const handleEstadoChange = (event) => {
+    const estadoId = event.target.value;
+    setSelectedEstado(estadoId);
 
-      if(Array.isArray(data)){
-        const formattedData = data.map(item => ({
-          id: item.id,
-          matricula: item.matricula,
-          nombre: item.nombre || 'No disponible',
-          fechasolicitud: item.fecha,
-          estado: item.state ? item.state.slug : 'Sin estado', 
-        }));
-        setRows(formattedData);
-      }else{
-        console.error('La respuesta no contiene un array en la propiedad "results"');
-      }
-      
-    }catch(error){
-      console.error('Error al obtener los datos:', error);
+    if (estadoId) {
+      ApiService.fetchProceduresByEstado(estadoId)
+        .then(data => setRows(data))
+        .catch(console.error);
     }
-  }
+  };
+
+  // Función para manejar el cambio del tipo a la tabla
+  const handleChangeTipo = (event) => {
+    const tipoSeleccionado = event.target.value;
+    setSelectedTipo(tipoSeleccionado);
+
+    ApiService.fetchProceduresByTipo(tipoSeleccionado)
+      .then(data => setRows(data))
+      .catch(console.error);
+  };
 
   useEffect(() => {
+    const fetchData = async () => {
+      try{
+        const formattedData = await ApiService.fetchProcedures();
+        setRows(formattedData);
+      }catch (error) {
+        console.error('Error al procesar los datos:', error);
+      }
+    }
+
+    ApiService.fetchEstados().then(setEstados).catch(console.error);
+    
     fetchData();
   }, []);
 
@@ -116,23 +128,18 @@ const handleAction = (row) => {
       <Typography variant="h4" component="h2" style={{ marginBottom: '20px' }}>
         Lista de Solicitudes
       </Typography>
-      <div style={{marginBottom:'20px'}}>
-        <Paper
-          component="form"
-          sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width: 400 }}
-        >
-          <InputBase
-            sx={{ ml: 1, flex: 1 }}
-            placeholder="Buscar Tramite"
-            inputProps={{ 'aria-label': 'Buscar trámite' }}
-            value={searchValue}
-            onChange={handleSearch}
-          />
-          <IconButton type="button" sx={{ p: '10px' }} aria-label="search">
-            <SearchIcon />
-          </IconButton>
-        </Paper>
-      </div>
+        
+      <BuscadoryFiltros
+        searchValue={searchValue}
+        handleSearch={handleSearch}
+        estados={estados}
+        selectedEstado={selectedEstado}
+        handleEstadoChange={handleEstadoChange}
+        selectedTipo={selectedTipo}
+        handleChangeTipo={handleChangeTipo}
+      />
+      
+      {/* Inicio de la tabla */}
       <div>
         <Paper sx={{ width: '100%', overflow: 'hidden' }}>
           <TableContainer sx={{ maxHeight: 440 }}>
