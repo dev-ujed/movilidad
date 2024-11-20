@@ -5,14 +5,20 @@ import SideBar from './sideBar';
 
 function Main() {
 
+  const [openSidebar, setOpenSidebar] = useState(false);
+
+  const toggleSidebar = () => {
+    setOpenSidebar((prev) => !prev);
+  };
+
   return (
     <div style={{  display: 'flex', flexDirection: 'column', height: '100vh' }}>
       <div>
-        <CustumAppBar />
+        <CustumAppBar toggleSidebar={toggleSidebar} />
       </div>
       <div style={{ display: 'flex', flex: 1 }}>
         {/* Sidebar */}
-        <SideBar />
+        <SideBar openSidebar={openSidebar} toggleSidebar={toggleSidebar} />
 
         {/* Contenido principal */}
         <div style={{ flex: 1, padding: '16px', overflowY: 'auto' }}>

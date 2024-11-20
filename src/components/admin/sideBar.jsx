@@ -18,14 +18,10 @@ const NAVIGATION = [
     { segment: 'rechazados', title: 'Rechazados', icon: <NoAccountsIcon /> },
 ];
 
-function SideBar() {
-    const [openSidebar, setOpenSidebar] = React.useState(false);
-    const theme = useTheme();
-    const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+function SideBar( { openSidebar, toggleSidebar } ) {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
-    const toggleSidebar = () => {
-        setOpenSidebar(!openSidebar);
-    };
 
   return (
     <div>
