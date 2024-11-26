@@ -30,7 +30,7 @@ export default function Login() {
 
         try {
             const response = await axios.post(
-                'https://movilidadback.ujed.mx/users/login/', 
+                'http://127.0.0.1:8000/users/login/', 
                 loginData, 
                 {
                     headers: {
@@ -38,7 +38,11 @@ export default function Login() {
                     }
                 }
             );
+
+            const { token, user } = response.data;
+
             //console.log("Token recibido:", response.data.token);
+            localStorage.setItem('user', JSON.stringify(user));
             localStorage.setItem('token', response.data.token);
             //window.location.href = "/dashboard";
             navigate("/main/inicio"); 
