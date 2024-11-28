@@ -58,6 +58,9 @@ function Detalles() {
 
       console.log("Documento aceptado:", response.data);
       setSuccessMessage2(true);
+      setTimeout(() => {
+        window.location.reload();
+      }, 1000);
 
     }catch(error){
       console.error("Error en aceptar el archivo:", error);
@@ -82,6 +85,9 @@ function Detalles() {
       console.log("Datos del boton rechazar:", response.data);
       setSuccessMessage(true);
       setRechazar(false);
+      setTimeout(() => {
+        window.location.reload();
+      }, 1000);
 
     }catch(error){
       console.error("Error al rechazar archivo:", error);
@@ -98,7 +104,9 @@ function Detalles() {
       );
 
       console.log('Solicitud aceptada:', response.data);
-
+      setTimeout(() => {
+        window.location.reload();
+      }, 2000);
       
     } catch (error) {
       console.error('Error en aceptar la solicitud:', error);
@@ -120,6 +128,9 @@ function Detalles() {
 
       console.log('Solicitud rechazada:', response2.data);
       console.log('Solicitud rechazada:', response.data);
+      setTimeout(() => {
+        window.location.reload();
+      }, 2000);
 
       
     } catch (error) {
@@ -155,7 +166,7 @@ function Detalles() {
         if(response.data.length > 0){
           const details = response.data[0]; 
           setDetalle(details);
-          console.log(details);
+          //console.log(details);
           console.log(details.matricula);
         }
 
@@ -176,7 +187,7 @@ function Detalles() {
         const response = await axios.get(`https://movilidadback.ujed.mx/intercambio/documents-procedure/`, {
           params: { matricula },
         });
-        console.log(response.data);
+        //console.log(response.data);
         //console.log(response.data.requeriment.description)
         setFiles(response.data);
 
@@ -192,7 +203,7 @@ function Detalles() {
   }, [matricula])
 
   return (
-    <div>
+    <div style={{background: '#F0F2F3'}}>
       <Typography variant="h4" component="h2" style={{ marginBottom: '20px' }}>
         Detalle de la Solicitud
       </Typography>
@@ -273,14 +284,14 @@ function Detalles() {
             <AccordionSummary expandIcon={<ExpandMoreIcon />}>
               <Typography>Documentos</Typography>
             </AccordionSummary>
-            <AccordionDetails>
+            <AccordionDetails style={{ maxHeight: '350px', overflowY: 'auto' }}>
               <div style={{ marginBottom: '20px', padding: '1rem' }}>
                 <Typography variant="body2">
                   Valida que la documentación entregada por el solicitante sea correcta para continuar con el trámite. En caso de que un documento no cumpla con los requisitos, se le pedirá al solicitante volver a adjuntarlo.
                 </Typography>
               </div>
               <div className="documentos" style={{ marginBottom: '20px', padding: '1rem' }}>
-                <TableContainer component={Paper}>
+                <TableContainer component={Paper} >
                   <Table sx={{ minWidth: 650 }}>
                     <TableBody>
                       {files.map((file) => (
@@ -310,7 +321,8 @@ function Detalles() {
                           )}
 
                           {/* Mostrar botones solo si no está aceptado ni rechazado */}
-                          {file.state !== 5 && file.state !== 6 && (
+                          {detalle?.state.id !== 3 && detalle?.state.id !== 4 && 
+                          file.state !== 5 && file.state !== 6 && (
                             <>
                               <TableCell align="center">
                                 <Button
@@ -338,9 +350,9 @@ function Detalles() {
                           )}
                         </TableRow>
                       ))}
-                    </TableBody>
-                  </Table>
-                </TableContainer>
+                      </TableBody>
+                    </Table>
+                  </TableContainer>
               </div>
             </AccordionDetails>
           </Accordion>
@@ -465,7 +477,7 @@ function Detalles() {
             Rechazar documento
           </Typography>
           <Typography id="modal-description" sx={{ mt: 2 }}>
-            Explicar brevemente el motivo de rechazo del documento
+            Explicar brevemente el motivo de rechazo de la solicitud
           </Typography>
           <form onSubmit={(e) => {
             e.preventDefault();

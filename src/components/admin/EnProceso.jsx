@@ -61,7 +61,7 @@ export default function EnProceso() {
   // Función para manejar la acción del botón
   const handleAction = (row) => {
   navigate(`/main/detalles/${row.matricula}`);
-  console.log('Detalles de la fila:', row);
+  //console.log('Detalles de la fila:', row);
   };
 
   const handleChangePage = (event, newPage) => {
