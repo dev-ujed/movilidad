@@ -14,14 +14,11 @@ import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import Modal from '@mui/material/Modal';
-import Box from '@mui/material/Box';
-import TextField from '@mui/material/TextField';
-import Stack from '@mui/material/Stack';
 import Snackbar from '@mui/material/Snackbar';
 import Alert from '@mui/material/Alert';
 
 import IconoPDF from './../../assets/image/pdf-flat.png';
+import ModalPlantilla from './CustomModal';
 
 function createData(name) {
   return { name };
@@ -68,7 +65,7 @@ function Detalles() {
   }
 
   const rechazarDocumento = async (id, state, comentario) => {
-    console.log(id)
+    console.log(id, comentario, state);
     try{
       const response = await axios.patch(
         `https://movilidadback.ujed.mx/intercambio/documents-procedure/decline-document/${id}/`,
@@ -405,106 +402,29 @@ function Detalles() {
         </Grid>
       </Grid>
 
-      {/* Modal para comentar el motivo del rechazo */}
-      <Modal
-        open={openDocumentoModal}
-        onClose={handleCloseModals}
-        aria-labelledby="modal-title"
-        aria-describedby="modal-description"
-      >
-        <Box
-          sx={{
-            position: 'absolute',
-            top: '50%',
-            left: '50%',
-            transform: 'translate(-50%, -50%)',
-            width: 400,
-            bgcolor: 'background.paper',
-            boxShadow: 24,
-            p: 4,
-            borderRadius: 2,
-          }}
-        >
-          <Typography id="modal-title" variant="h6" component="h2">
-            Rechazar documento
-          </Typography>
-          <Typography id="modal-description" sx={{ mt: 2 }}>
-            Explicar brevemente el motivo de rechazo del documento
-          </Typography>
-          <form onSubmit={(e) => {
-            e.preventDefault();
-            rechazarDocumento(selectedFileId, 6, comentario);
-          }}>
-            <Stack spacing={2} sx={{ mt: 2 }}>
-              <TextField
-                label="Comentario"
-                variant="outlined"
-                fullWidth
-                autoFocus
-                required
-                value={comentario}
-                onChange={(e) => setComentario(e.target.value)}
-              />
-              <Button type="submit" variant="contained" color="error">
-                Rechazar
-              </Button>
-            </Stack>
-          </form>
-        </Box>
-      </Modal>
+      <ModalPlantilla
+         open={openDocumentoModal}
+         onClose={() => setOpenDocumentoModal(false)}
+         title="Rechazar documento"
+         description="Explicar brevemente el motivo de rechazo del documento"
+         onSubmit={() => rechazarDocumento(selectedFileId, 6, comentario,)}
+         comentario={comentario}
+         setComentario={setComentario}
+      />
+      <ModalPlantilla
+         open={openSolicitudModal}
+         onClose={() => setOpenSolicitudModal(false)}
+         title="Rechazar solicitud"
+         description="Explicar brevemente el motivo de rechazo de la solicitud"
+         onSubmit={() => rechazarSolicitud(selectedFileId, 4, comentario)}
+         comentario={comentario}
+         setComentario={setComentario}
+      />
 
-      {/* Modal para comentar el motivo de la SOLICITUD */}
-      <Modal
-        open={openSolicitudModal}
-        onClose={handleCloseModals}
-        aria-labelledby="modal-title"
-        aria-describedby="modal-description"
-      >
-        <Box
-          sx={{
-            position: 'absolute',
-            top: '50%',
-            left: '50%',
-            transform: 'translate(-50%, -50%)',
-            width: 400,
-            bgcolor: 'background.paper',
-            boxShadow: 24,
-            p: 4,
-            borderRadius: 2,
-          }}
-        >
-          <Typography id="modal-title" variant="h6" component="h2">
-            Rechazar documento
-          </Typography>
-          <Typography id="modal-description" sx={{ mt: 2 }}>
-            Explicar brevemente el motivo de rechazo de la solicitud
-          </Typography>
-          <form onSubmit={(e) => {
-            e.preventDefault();
-            rechazarSolicitud(selectedFileId, 4, comentario);
-          }}>
-            <Stack spacing={2} sx={{ mt: 2 }}>
-              <TextField
-                label="Comentario"
-                variant="outlined"
-                fullWidth
-                autoFocus
-                required
-                value={comentario}
-                onChange={(e) => setComentario(e.target.value)}
-              />
-              <Button type="submit" variant="contained" color="error">
-                Rechazar
-              </Button>
-            </Stack>
-          </form>
-        </Box>
-      </Modal>
-
-      {/* Snackbar para mensaje de éxito */}
+      {/* Snackbar para mensaje error */}
       <Snackbar
         open={successMessage}
-        autoHideDuration={3000} // Duración del mensaje en milisegundos
+        autoHideDuration={3000} 
         onClose={() => setSuccessMessage(false)}
         anchorOrigin={{ vertical: "top", horizontal: "center" }}
       >
@@ -516,7 +436,7 @@ function Detalles() {
       {/* Snackbar para mensaje de éxito */}
       <Snackbar
         open={successMessage2}
-        autoHideDuration={3000} // Duración del mensaje en milisegundos
+        autoHideDuration={3000} 
         onClose={() => setSuccessMessage2(false)}
         anchorOrigin={{ vertical: "top", horizontal: "center" }}
       >
