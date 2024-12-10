@@ -281,13 +281,13 @@ function Detalles() {
             <AccordionSummary expandIcon={<ExpandMoreIcon />}>
               <Typography>Documentos</Typography>
             </AccordionSummary>
-            <AccordionDetails style={{ maxHeight: '350px', overflowY: 'auto' }}>
+            <AccordionDetails>
               <div style={{ marginBottom: '20px', padding: '1rem' }}>
                 <Typography variant="body2">
                   Valida que la documentación entregada por el solicitante sea correcta para continuar con el trámite. En caso de que un documento no cumpla con los requisitos, se le pedirá al solicitante volver a adjuntarlo.
                 </Typography>
               </div>
-              <div className="documentos" style={{ marginBottom: '20px', padding: '1rem' }}>
+              <div className="documentos" style={{ marginBottom: '20px', padding: '1rem', height: 'auto',  overflow: 'auto'}} >
                 <TableContainer component={Paper} >
                   <Table sx={{ minWidth: 650 }}>
                     <TableBody>
@@ -321,7 +321,7 @@ function Detalles() {
                           {detalle?.state.id !== 3 && detalle?.state.id !== 4 && 
                           file.state !== 5 && file.state !== 6 && (
                             <>
-                              <TableCell align="center">
+                              <TableCell align="center" style={{ fontSize: '12px'}}>
                                 <Button
                                   onClick={() => aceptarDocumento(file.id, 5)}
                                   variant="outlined"
@@ -332,7 +332,7 @@ function Detalles() {
                                   Aceptar
                                 </Button>
                               </TableCell>
-                              <TableCell align="center">
+                              <TableCell align="center" style={{ fontSize: '12px'}}>
                                 <Button
                                   onClick={() => handleOpenRechazarDocumentoModal(file.id)}
                                   variant="outlined"
